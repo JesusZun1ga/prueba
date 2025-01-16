@@ -17,23 +17,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'  # Especifica la versión de PHP que necesitas
-
 
       - name: Install dependencies
         run: |
           curl -sS https://getcomposer.org/installer | php  # Instalar Composer
           php composer.phar install  # Instalar las dependencias del proyecto, como PHPUnit
 
-
       - name: Run PHPUnit tests
         run: |
           ./vendor/bin/phpunit --configuration phpunit.xml  # Ejecuta las pruebas con PHPUnit
 
-	- name: Verify PHP version
- 	 run: php -v
-
+      - name: Verify PHP version
+        run: php -v  # Verifica la versión de PHP
