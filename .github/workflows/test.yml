@@ -1,0 +1,35 @@
+name: Run Tests with PHPUnit
+
+on:
+  push:
+    branches:
+      - master  # Rama que activará la acción (ajustar si usas otra rama principal)
+  pull_request:
+    branches:
+      - master  # Rama de destino para pull requests (ajustar si usas otra rama principal)
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # El entorno donde se ejecutará la acción (Ubuntu)
+    
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'  # Especifica la versión de PHP que necesitas
+
+
+      - name: Install dependencies
+        run: |
+          curl -sS https://getcomposer.org/installer | php  # Instalar Composer
+          php composer.phar install  # Instalar las dependencias del proyecto, como PHPUnit
+
+
+      - name: Run PHPUnit tests
+        run: |
+          ./vendor/bin/phpunit --configuration phpunit.xml  # Ejecuta las pruebas con PHPUnit
