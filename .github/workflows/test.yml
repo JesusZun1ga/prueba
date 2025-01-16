@@ -3,14 +3,14 @@ name: Run Tests with PHPUnit
 on:
   push:
     branches:
-      - master  # Rama que activará la acción (ajustar si usas otra rama principal)
+      - master  
   pull_request:
     branches:
-      - master  # Rama de destino para pull requests (ajustar si usas otra rama principal)
+      - master  
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # El entorno donde se ejecutará la acción (Ubuntu)
+    runs-on: ubuntu-latest  
     
     steps:
 
@@ -20,7 +20,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'  # Especifica la versión de PHP que necesitas
+          php-version: '8.2' 
 
       - name: Install dependencies
         run: |
@@ -28,12 +28,12 @@ jobs:
           php composer.phar install  # Instalar las dependencias del proyecto, como PHPUnit
 
       - name: Ensure PHPUnit has execute permissions
-        run: chmod +x ./vendor/bin/phpunit  # Establece permisos de ejecución a PHPUnit
+        run: chmod +x ./vendor/bin/phpunit 
 
       - name: Run PHPUnit tests
         run: |
           ./vendor/bin/phpunit --configuration phpunit.xml  # Ejecuta las pruebas con PHPUnit
 
       - name: Verify PHP version
-        run: php -v  # Verifica la versión de PHP
+        run: php -v  
 
