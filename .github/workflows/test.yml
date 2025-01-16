@@ -27,9 +27,13 @@ jobs:
           curl -sS https://getcomposer.org/installer | php  # Instalar Composer
           php composer.phar install  # Instalar las dependencias del proyecto, como PHPUnit
 
+      - name: Ensure PHPUnit has execute permissions
+        run: chmod +x ./vendor/bin/phpunit  # Establece permisos de ejecución a PHPUnit
+
       - name: Run PHPUnit tests
         run: |
           ./vendor/bin/phpunit --configuration phpunit.xml  # Ejecuta las pruebas con PHPUnit
 
       - name: Verify PHP version
         run: php -v  # Verifica la versión de PHP
+
