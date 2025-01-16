@@ -21,7 +21,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'  # Especifica la versión de PHP que necesitas
+          php-version: '8.2'  # Especifica la versión de PHP que necesitas
 
 
       - name: Install dependencies
@@ -33,3 +33,7 @@ jobs:
       - name: Run PHPUnit tests
         run: |
           ./vendor/bin/phpunit --configuration phpunit.xml  # Ejecuta las pruebas con PHPUnit
+
+	- name: Verify PHP version
+ 	 run: php -v
+
