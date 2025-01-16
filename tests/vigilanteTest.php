@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 class vigilanteTest extends TestCase {
 
-    /*public function testMetodoSolicitudIncorrecto() {
+    public function testMetodoSolicitudIncorrecto() {
         echo "Ejecutando testMetodoSolicitudIncorrecto\n";
         $_SERVER['REQUEST_METHOD'] = 'POST'; 
         $_SESSION = [];
@@ -19,7 +19,7 @@ class vigilanteTest extends TestCase {
         $this->assertEquals('ERROR', $response['titulo']);
         $this->assertEquals('Intento de operación incorrecta', $response['msj']);
         $this->assertEquals(500, $response['cod']);
-    }*/
+    }
 
     public function testSesionNoIniciada() {
         $_SERVER['REQUEST_METHOD'] = 'GET'; 
